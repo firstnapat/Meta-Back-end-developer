@@ -1,115 +1,131 @@
-menu = {
-    1: {"name": 'espresso',
-        "price": 1.99},
-    2: {"name": 'coffee', 
-        "price": 2.50},
-    3: {"name": 'cake', 
-        "price": 2.79},
-    4: {"name": 'soup', 
-        "price": 4.50},
-    5: {"name": 'sandwich',
-        "price": 4.99}
-}
-
-def calculate_subtotal(order):
-    """ Calculates the subtotal of an order
-
-    [IMPLEMENT ME] 
-        1. Add up the prices of all the items in the order and return the sum
+def read_file(file_name):
+    """ Reads in a file.
+    [IMPLEMENT ME]
+        1. Open and read the given file into a variable using the File read()
+           function
+        2. Print the contents of the file
+        3. Return the contents of the file
 
     Args:
-        order: list of dicts that contain an item name and price
+        file_name: the name of the file to be read
 
     Returns:
-        float = The sum of the prices of the items in the order
+        string: contents of the given file.
     """
-    print('Calculating bill subtotal...')
     ### WRITE SOLUTION HERE
-    for i in order:
-        
+    f = open(file_name, 'r')
+    f_content = f.read()
+    print(f_content)
+    return f_content
+    
 
-    raise NotImplementedError()
+    raise NotImplementedError('Something went wrong!')
 
-def calculate_tax(subtotal):
-    """ Calculates the tax of an order
-
-    [IMPLEMENT ME] 
-        1. Multiply the subtotal by 15% and return the product rounded to two decimals.
-
-    Args:
-        subtotal: the price to get the tax of
-
-    Returns:
-        float - The tax required of a given subtotal, which is 15% rounded to two decimals.
-    """
-    print('Calculating tax from subtotal...')
-    ### WRITE SOLUTION HERE
-
-    raise NotImplementedError()
-
-def summarize_order(order):
-    """ Summarizes the order
+def read_file_into_list(file_name):
+    """ Reads in a file and stores each line as an element in a list
 
     [IMPLEMENT ME]
-        1. Calculate the total (subtotal + tax) and store it in a variable named total (rounded to two decimals)
-        2. Store only the names of all the items in the order in a list called names
-        3. Return names and total.
+        1. Open the given file
+        2. Read the file line by line and append each line to a list
+        3. Return the list
 
     Args:
-        order: list of dicts that contain an item name and price
+        file_name: the name of the file to be read
 
     Returns:
-        tuple of names and total. The return statement should look like 
-        
-        return names, total
-
+        list: a list where each element is a line in the file.
     """
-    print_order(order)
     ### WRITE SOLUTION HERE
+    f_list = open(file_name, 'r')
+    f_list_content = f_list.readlines()
+    # f_list_content_list = f_list_content.split("\n")
+    return f_list_content
 
     raise NotImplementedError()
 
-# This function is provided for you, and will print out the items in an order
-def print_order(order):
-    print('You have ordered ' + str(len(order)) + ' items')
-    items = []
-    items = [item["name"] for item in order]
-    print(items)
-    return order
+def write_first_line_to_file(file_contents, output_filename):
+    """ Writes the first line of a string to a file.
 
-# This function is provided for you, and will display the menu
-def display_menu():
-    print("------- Menu -------")
-    for selection in menu:
-        print(f"{selection}. {menu[selection]['name'] : <9} | {menu[selection]['price'] : >5}")
-    print()
+    [IMPLEMENT ME]
+        1. Get the first line of file_contents
+        2. Use the File write() function to write the first line into a file
+           with the name from output_filename
 
-# This function is provided for you, and will create an order by prompting the user to select menu items
-def take_order():
-    display_menu()
-    order = []
-    count = 1
-    for i in range(3):
-        item = input('Select menu item number ' + str(count) + ' (from 1 to 5): ')
-        count += 1
-        order.append(menu[int(item)])
-    return order
+        We determine the first line to be everything in a string before the
+        first newline ('\n') character.
+
+    Args:
+        file_contents: string to be split and written into output file
+        output_filename: the name of the file to be written to
+    """
+    ### WRITE SOLUTION HERE
+    first_file = open(file_contents, 'r')
+    first_file_content = first_file.readline()
+    write_file = open(output_filename, 'w')
+    write_file_content = write_file.writelines(first_file_content)
+    return write_file_content
+
+    raise NotImplementedError()
+
+
+def read_even_numbered_lines(file_name):
+    """ Reads in the even numbered lines of a file
+
+    [IMPLEMENT ME]
+        1. Open and read the given file into a variable
+        2. Read the file line-by-line and add the even-numbered lines to a list
+        3. Return the list
+
+    Args:
+        file_name: the name of the file to be read
+
+    Returns:
+        list: a list of the even-numbered lines of the file
+    """
+    ### WRITE SOLUTION HERE
+    file_even = open(file_name, 'r')
+    file_even_content = file_even.readlines()
+    list_even = []
+    # return file_even_content_list
+    for i in file_even_content:
+        if file_even_content.index(i) % 2 == 0 and file_even_content.index(i) != 0:     
+            list_even.append(i)
+    return list_even
+
+    raise NotImplementedError()
+
+def read_file_in_reverse(file_name):
+    """ Reads a file and returns a list of the lines in reverse order
+
+    [IMPLEMENT ME]
+        1. Open and read the given file into a variable
+        2. Read the file line-by-line and store the lines in a list in reverse order
+        3. Print the list
+        4. Return the list
+
+    Args:
+        file_name: the name of the file to be read
+
+    Returns:
+        list: list of the lines of the file in reverse order.
+    """
+    ### WRITE SOLUTION HERE
+    file_reverse = open(file_name, 'r')
+    file_reverse_content = file_reverse.readlines()
+    file_reverse_content.reverse()
+    return file_reverse_content
+    raise NotImplementedError()
 
 '''
-Here are some sample function calls to help you test your implementations.
-Feel free to change, uncomment, and add these as you wish.
+Here are some sample commands to help you run/test your implementations.
+Feel free to uncomment/modify/add to them as you wish.
 '''
 def main():
-    order = take_order()
-    print_order(order)
-
-    subtotal = calculate_subtotal(order)
-    print("Subtotal for the order is: " + str(subtotal))
-
-    tax = calculate_tax(subtotal)
-    print("Tax for the order is: " + str(tax))
-
-    items, subtotal = summarize_order(order)
+    # file_contents = read_file("sampletext.txt")
+    # print(read_file_into_list("sampletext.txt"))
+    write_first_line_to_file("sampletext.txt", "online.txt")
+    print(read_even_numbered_lines("sampletext.txt"))
+    # print(read_file_in_reverse("sampletext.txt"))
 
 if __name__ == "__main__":
     main()
