@@ -65,3 +65,9 @@ Nice work! To complete this assessment:
 Your code will be autograded and return feedback shortly on the "Grades" tab.  
 You can also see your score in your Programming Assignment "My Submission" tab.
 <br> <br> 
+
+### I have log error I pass 80%
+* write_first_line_to_file: function returned this error: [Errno 2] No such file or directory: 'Hello world\nabc\ndef\nghi'.
+* write_first_line_to_file: function returned this error: [Errno 2] No such file or directory: 'One line'.
+* write_first_line_to_file: function returned this error: [Errno 2] No such file or directory: ''.
+* write_first_line_to_file: function returned this error: [Errno 2] No such file or directory: '\nHello world'.

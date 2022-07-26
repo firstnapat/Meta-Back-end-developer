@@ -13,111 +13,123 @@ def read_file(file_name):
         string: contents of the given file.
     """
     ### WRITE SOLUTION HERE
-    f = open('sampletext.txt', 'r')
+    f = open(file_name, 'r')
     f_content = f.read()
     print(f_content)
+    return f_content
+    
+
+    raise NotImplementedError('Something went wrong!')
+
+def read_file_into_list(file_name):
+    """ Reads in a file and stores each line as an element in a list
+
+    [IMPLEMENT ME]
+        1. Open the given file
+        2. Read the file line by line and append each line to a list
+        3. Return the list
+
+    Args:
+        file_name: the name of the file to be read
+
+    Returns:
+        list: a list where each element is a line in the file.
+    """
+    ### WRITE SOLUTION HERE
+    f_list = open(file_name, 'r')
+    f_list_content = f_list.readlines()
+    # f_list_content_list = f_list_content.split("\n")
+    return f_list_content
 
     raise NotImplementedError()
 
-# def read_file_into_list(file_name):
-#     """ Reads in a file and stores each line as an element in a list
+def write_first_line_to_file(file_contents, output_filename):
+    """ Writes the first line of a string to a file.
 
-#     [IMPLEMENT ME]
-#         1. Open the given file
-#         2. Read the file line by line and append each line to a list
-#         3. Return the list
+    [IMPLEMENT ME]
+        1. Get the first line of file_contents
+        2. Use the File write() function to write the first line into a file
+           with the name from output_filename
 
-#     Args:
-#         file_name: the name of the file to be read
+        We determine the first line to be everything in a string before the
+        first newline ('\n') character.
 
-#     Returns:
-#         list: a list where each element is a line in the file.
-#     """
-#     ### WRITE SOLUTION HERE
-    # f = open('sampletext.txt', 'r')
-    # f_content = f.read()
-    # f_content_list = f_content.split("\n")
-    # print(f_content_list)
+    Args:
+        file_contents: string to be split and written into output file
+        output_filename: the name of the file to be written to
+    """
+    
+    ### WRITE SOLUTION HERE
+    first_file = open(file_contents, 'r')
+    first_file_content = first_file.read()
+    first_file_content_list = first_file_content.split("\n", 1)[0]
+    # print(first_file_content_list)
+    write_file = open(output_filename, 'w')
+    write_file_content = write_file.write("\n" + first_file_content_list)
+    return output_filename
 
-#     raise NotImplementedError()
+    raise NotImplementedError()
+    
 
-# def write_first_line_to_file(file_contents, output_filename):
-#     """ Writes the first line of a string to a file.
+def read_even_numbered_lines(file_name):
+    """ Reads in the even numbered lines of a file
 
-#     [IMPLEMENT ME]
-#         1. Get the first line of file_contents
-#         2. Use the File write() function to write the first line into a file
-#            with the name from output_filename
+    [IMPLEMENT ME]
+        1. Open and read the given file into a variable
+        2. Read the file line-by-line and add the even-numbered lines to a list
+        3. Return the list
 
-#         We determine the first line to be everything in a string before the
-#         first newline ('\n') character.
+    Args:
+        file_name: the name of the file to be read
 
-#     Args:
-#         file_contents: string to be split and written into output file
-#         output_filename: the name of the file to be written to
-#     """
-#     ### WRITE SOLUTION HERE
-#     with open('sampletext.txt', 'r') as file:
-#         print(file.readline())
+    Returns:
+        list: a list of the even-numbered lines of the file
+    """
+    ### WRITE SOLUTION HERE
+    with open(file_name, 'r') as file_read:
+        f = file_read.readlines()
+        even_list = []
+        for index, values in enumerate(f):
+            if (index + 1) % 2 == 0 :
+                even_list.append(values)
+        return even_list        
 
-#     raise NotImplementedError()
+    raise NotImplementedError()
 
+def read_file_in_reverse(file_name):
+    """ Reads a file and returns a list of the lines in reverse order
 
-# def read_even_numbered_lines(file_name):
-#     """ Reads in the even numbered lines of a file
+    [IMPLEMENT ME]
+        1. Open and read the given file into a variable
+        2. Read the file line-by-line and store the lines in a list in reverse order
+        3. Print the list
+        4. Return the list
 
-#     [IMPLEMENT ME]
-#         1. Open and read the given file into a variable
-#         2. Read the file line-by-line and add the even-numbered lines to a list
-#         3. Return the list
+    Args:
+        file_name: the name of the file to be read
 
-#     Args:
-#         file_name: the name of the file to be read
-
-#     Returns:
-#         list: a list of the even-numbered lines of the file
-#     """
-#     ### WRITE SOLUTION HERE
-#     with open('sampletext.txt', 'r') as file:
-#         for i in file:
-#             if i%2==0:
-#                 print(file.readlines())
-#     raise NotImplementedError()
-
-# def read_file_in_reverse(file_name):
-#     """ Reads a file and returns a list of the lines in reverse order
-
-#     [IMPLEMENT ME]
-#         1. Open and read the given file into a variable
-#         2. Read the file line-by-line and store the lines in a list in reverse order
-#         3. Print the list
-#         4. Return the list
-
-#     Args:
-#         file_name: the name of the file to be read
-
-#     Returns:
-#         list: list of the lines of the file in reverse order.
-#     """
-#     ### WRITE SOLUTION HERE
-#     with open('sampletext.txt', 'r') as file:
-#         for i in file:
-#             if i%2==0:
-#                 print(file.readlines())
-#     raise NotImplementedError()
+    Returns:
+        list: list of the lines of the file in reverse order.
+    """
+    ### WRITE SOLUTION HERE
+    file_reverse = open(file_name, 'r')
+    file_reverse_content = file_reverse.readlines()
+    file_reverse_content.reverse()
+    return file_reverse_content
+    raise NotImplementedError()
 
 '''
 Here are some sample commands to help you run/test your implementations.
 Feel free to uncomment/modify/add to them as you wish.
 '''
 def main():
-    file_contents = read_file("sampletext.txt")
+    # file_contents = read_file("sampletext.txt")
+    file_contents = "sampletext.txt"
     # print(read_file_into_list("sampletext.txt"))
-    # write_first_line_to_file(file_contents, "online.txt")
+    write_first_line_to_file(file_contents, "online.txt")
     # print(read_even_numbered_lines("sampletext.txt"))
     # print(read_file_in_reverse("sampletext.txt"))
 
 if __name__ == "__main__":
     main()
 
-    
